@@ -5,19 +5,36 @@ class NewItem extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			names: [],
-			index: 0,
+			score: 0,
+			level: 1,
 		};
 
-		this.handleScore= this.handleScore.bind(this);
+		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
 		this.handleLevelChange = this.handleLevelChange.bind(this);
+		this.handleScoreDecrement = this.handleScoreDecrement.bind(this);
 	}
 
 	handleLevelChange(e){
-
+		if(this.state.level == 1){
+			this.setState({level: this.state.level +1});
+		} else if(this.state.level == 2){
+			this.setState({level: this.state.level +1});
+		} else if(this.state.level == 3){
+			this.setState({level: this.state.level +1});
+		} else if(this.state.level == 4){
+			this.setState({level: this.state.level +1});
+		} else{
+			this.setState({level: this.state.level = 1});
+		}
 	}
 
-	handleScore(e){
+	handleScoreIncrement(e){
+		var counter = 0;
+		if(counter < 5){
+			this.setState({score: this.state.score+10});
+		} else {
+			this.handleLevelChange();
+		}
 		//Get the selection of where the user clicked
 		//if statement
 			//increment score by 10
@@ -60,18 +77,12 @@ class NewItem extends Component{
           				<h1 style={headerStyle}> Grocery List </h1>
         			</div>
         			<div>
-        				<h2 style={groceryListStyle}> Number of items: {this.state.index}</h2>
+        				<h2 style={groceryListStyle}> Number of score: {this.state.score}</h2>
         			</div>
-        			<form style={formStyle}> 
-          				<label style={groceryListStyle}> Grocery Item:
-            				<input type="text" ref={input => this.textInput = input}></input>
-          				</label>
-          				<button style={buttonStyle} onClick={this.handleChange}> Submit </button>
-        			</form>
-        				<GroceryList delete={this.handleDelete} foods={this.state.names} />
+          			<button style={buttonStyle} onClick={this.handleScoreIncrement}> Submit </button>
         		</div>
         	</div>
 		);
 	}
 }
-export default NewItem;
+export default Menu;
