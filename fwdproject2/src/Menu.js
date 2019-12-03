@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Hint from './Hint';
+//import Hint from './Hint';
+import Background from '../images/Level2.png';
 
 class Menu extends Component{
 	constructor(props){
@@ -11,7 +12,7 @@ class Menu extends Component{
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
 		this.handleLevelChange = this.handleLevelChange.bind(this);
-		this.handleScoreDecrement = this.handleScoreDecrement.bind(this);
+		//this.handleScoreDecrement = this.handleScoreDecrement.bind(this);
 	}
 
 	handleLevelChange(e){
@@ -70,16 +71,22 @@ class Menu extends Component{
       		borderRadius: "8px",
       		fontSize: 14
     	}
+    	var backgroundDesign={
+    		backgroundImage: "url(${Background})",
+    		backgroundPosition: "center"
+    	}
 		return(
 			<div>
         		<div className = "groceryListMain">
         			<div className = "header">
-          				<h1 style={headerStyle}> Grocery List </h1>
+          				<h1 style={headerStyle}> Find Me! </h1>
         			</div>
-        			<div>
-        				<h2 style={groceryListStyle}> Number of score: {this.state.score}</h2>
-        			</div>
-          			<button style={buttonStyle} onClick={this.handleScoreIncrement}> Submit </button>
+        			<div style={backgroundDesign}>
+	        			<div>
+	        				<h2 style={groceryListStyle}> Your score: {this.state.score}</h2>
+	        			</div>
+	          			<button style={buttonStyle} onClick={this.handleScoreIncrement}> Submit </button>
+	          		</div>
         		</div>
         	</div>
 		);
