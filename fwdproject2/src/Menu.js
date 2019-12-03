@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //import Hint from './Hint';
-import Background from '../images/Level2.png';
+//import Background from '/images/Level2.png';
 
 class Menu extends Component{
 	constructor(props){
@@ -72,7 +72,7 @@ class Menu extends Component{
       		fontSize: 14
     	}
     	var backgroundDesign={
-    		backgroundImage: "url(${Background})",
+    		backgroundImage: "url('images/Level2.png')",
     		backgroundPosition: "center"
     	}
 		return(
