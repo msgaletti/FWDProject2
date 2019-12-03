@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Hint from './Hint';
 
-class NewItem extends Component{
+class Menu extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
