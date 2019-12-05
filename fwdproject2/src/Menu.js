@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import Hint from './Hint';
+import Hint from './Hint';
 
 
 class Menu extends Component{
@@ -9,20 +9,12 @@ class Menu extends Component{
 			score: 0,
 			level: 1,
 			counter: 0,
-			randx1: 0,
-			randx2: 0,
-			randx3: 0,
-			randx4: 0,
-			randx5: 0,
-			randy1: 0, 
-			randy2: 0,
-			randy3: 0,
-			randy4: 0,
-			randy5: 0
+			imageFound: false
 		};
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
 		this.handleLevelChange = this.handleLevelChange.bind(this);
+		this.handleHide = this.handleHide.bind(this);
 		
 	}
 
@@ -41,6 +33,10 @@ class Menu extends Component{
 		}
 	}
 
+	handleHide(e){
+		
+	}
+
 
 	handleScoreIncrement(e){
 		if(this.state.counter < 5){
@@ -49,16 +45,13 @@ class Menu extends Component{
 			this.handleLevelChange();
 			this.setState({counter: this.state.counter=0});
 		}
-		//Get the selection of where the user clicked
-		//if statement
-			//increment score by 10
-		//else if the user doesn't select on where the items are
-			//decrement the score by 1 on level 1, 2 on level 2, and so on
 		e.preventDefault();
 	}
 
 	
-
+//Use component did mount or onMount
+//play again 
+//generate all random numbers and then call again if doing a play again
 	render(){
 		var headerStyle = {
 			fontFamily: "sans-serif",
@@ -90,16 +83,41 @@ class Menu extends Component{
     		backgroundImage: "url('/coffeeshop.png')",
     		backgroundSize: "cover",
     		backgroundPosition: "center",
+    		justifyContent: "center",
     		width: "50vw",
     		height: "50vw",
     		backgroundRepeat: "no-repeat",
-    		marginBottom: "5%"
+    		margin: "0 auto"
     	}
-    	var findItemStyle ={
+    	var findItemStyle1 ={
     		maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*500,
-    		top: Math.random()*600
+    		left: Math.random()*40 + "vw",
+    		top: Math.random()*40 + "vw"
+    	}
+    	var findItemStyle2 ={
+    		maxWidth: "5%",
+    		position: "relative",
+    		left: Math.random()*40 + "vw",
+    		top: Math.random()*40 + "vw"
+    	}
+    	var findItemStyle3 = {
+    		maxWidth: "5%",
+    		position: "relative",
+    		left: Math.random()*40 + "vw",
+    		top: Math.random()*40 + "vw"
+    	}
+    	var findItemStyle4 = {
+    		maxWidth: "5%",
+    		position: "relative",
+    		left: Math.random()*40 + "vw",
+    		top: Math.random()*40 + "vw"
+    	}
+    	var findItemStyle5 = {
+			maxWidth: "5%",
+    		position: "relative",
+    		left: Math.random()*40 + "vw",
+    		top: Math.random()*40 + "vw"
     	}
     	var centerStyle = {
     		justifyContent: "center",
@@ -116,9 +134,14 @@ class Menu extends Component{
         			</div>
           			<div style={centerStyle}>
 	          			<div style={backgroundDesign}>
-	          				<img src="coffeecup.png" style={findItemStyle} onClick={this.handleScoreIncrement}/>
+	          				<img src="coffeecup.png" style={findItemStyle1} onClick={this.handleScoreIncrement}/>
+	          				<img src="book.png" style={findItemStyle2} onClick={this.handleScoreIncrement}/>
+	          				<img src="bean.png" style={findItemStyle3} onClick={this.handleScoreIncrement}/>
+	          				<img src="frenchpress.png" style={findItemStyle4} onClick={this.handleScoreIncrement}/>
+	          				<img src="eclaire.png" style={findItemStyle5} onClick={this.handleScoreIncrement}/>
 	          			</div>
 	          		</div>
+	          		<Hint />
         		</div>
         	</div>
 		);
