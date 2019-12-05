@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 //import Hint from './Hint';
-//import Background from '/images/Level2.png';
+
 
 class Menu extends Component{
 	constructor(props){
@@ -8,11 +8,22 @@ class Menu extends Component{
 		this.state = {
 			score: 0,
 			level: 1,
+			counter: 0,
+			randx1: 0,
+			randx2: 0,
+			randx3: 0,
+			randx4: 0,
+			randx5: 0,
+			randy1: 0, 
+			randy2: 0,
+			randy3: 0,
+			randy4: 0,
+			randy5: 0
 		};
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
 		this.handleLevelChange = this.handleLevelChange.bind(this);
-		//this.handleScoreDecrement = this.handleScoreDecrement.bind(this);
+		
 	}
 
 	handleLevelChange(e){
@@ -26,15 +37,17 @@ class Menu extends Component{
 			this.setState({level: this.state.level +1});
 		} else{
 			this.setState({level: this.state.level = 1});
+			this.setState({score: this.state.score =0});
 		}
 	}
 
+
 	handleScoreIncrement(e){
-		var counter = 0;
-		if(counter < 5){
-			this.setState({score: this.state.score+10});
+		if(this.state.counter < 5){
+			this.setState({score: this.state.score+10, counter: this.state.counter+1});
 		} else {
 			this.handleLevelChange();
+			this.setState({counter: this.state.counter=0});
 		}
 		//Get the selection of where the user clicked
 		//if statement
@@ -43,6 +56,8 @@ class Menu extends Component{
 			//decrement the score by 1 on level 1, 2 on level 2, and so on
 		e.preventDefault();
 	}
+
+	
 
 	render(){
 		var headerStyle = {
@@ -72,8 +87,22 @@ class Menu extends Component{
       		fontSize: 14
     	}
     	var backgroundDesign={
-    		backgroundImage: "url('images/Level2.png')",
-    		backgroundPosition: "center"
+    		backgroundImage: "url('/coffeeshop.png')",
+    		backgroundSize: "cover",
+    		backgroundPosition: "center",
+    		width: "50vw",
+    		height: "50vw",
+    		backgroundRepeat: "no-repeat",
+    		marginBottom: "5%"
+    	}
+    	var findItemStyle ={
+    		maxWidth: "5%",
+    		position: "relative",
+    		left: Math.random()*500,
+    		top: Math.random()*600
+    	}
+    	var centerStyle = {
+    		justifyContent: "center",
     	}
 		return(
 			<div>
@@ -81,11 +110,14 @@ class Menu extends Component{
         			<div className = "header">
           				<h1 style={headerStyle}> Find Me! </h1>
         			</div>
-        			<div style={backgroundDesign}>
-	        			<div>
-	        				<h2 style={groceryListStyle}> Your score: {this.state.score}</h2>
-	        			</div>
-	          			<button style={buttonStyle} onClick={this.handleScoreIncrement}> Submit </button>
+        			<div>
+        				<h2 style={groceryListStyle}> Your score: {this.state.score}</h2>
+        				<h3 style={groceryListStyle}> Your level: {this.state.level}</h3>
+        			</div>
+          			<div style={centerStyle}>
+	          			<div style={backgroundDesign}>
+	          				<img src="coffeecup.png" style={findItemStyle} onClick={this.handleScoreIncrement}/>
+	          			</div>
 	          		</div>
         		</div>
         	</div>
