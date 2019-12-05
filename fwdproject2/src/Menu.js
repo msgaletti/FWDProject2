@@ -57,7 +57,7 @@ class Menu extends Component{
 			fontFamily: "sans-serif",
 			align: "center",
 			textAlign: "center",
-			fontSize: 48,
+			fontSize: 28,
 			color: "#00003f"
 		}
 		var groceryListStyle = {
