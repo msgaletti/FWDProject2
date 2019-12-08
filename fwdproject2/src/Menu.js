@@ -46,6 +46,12 @@ class Menu extends Component{
 		} else if(this.state.level == 2){
 			this.setState({level: this.state.level +1});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/kidsplayroom.png"});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
+			this.setState({itemsLevels: this.state.itemsLevels = ["bear.png", "car.png", "lego.png", "minion.png", "train.png"]});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
