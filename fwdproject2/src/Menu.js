@@ -36,10 +36,16 @@ class Menu extends Component{
 	handleLevelChange(e){
 		if(this.state.level == 1){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/shipwreckAsset.png"});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
+			this.setState({itemsLevels: this.state.itemsLevels = ["treasure.png", "anchor.png", "goblet.png", "rum.png", "wheel.png"]});
 		} else if(this.state.level == 2){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/kidsplayroom.png"});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
@@ -67,17 +73,9 @@ class Menu extends Component{
 				this.setState({imageFound4: this.state.imageFound4 =true});
 			} else{
 				this.setState({imageFound5: this.state.imageFound5 =true});
+				this.setState({counter: this.state.counter=0});
 				this.handleLevelChange();
 			}
-			
-		} else {
-			this.handleLevelChange();
-			this.setState({counter: this.state.counter=0});
-			this.setState({imageFound1: this.state.imageFound1=false});
-			this.setState({imageFound2: this.state.imageFound2=false});
-			this.setState({imageFound3: this.state.imageFound3=false});
-			this.setState({imageFound4: this.state.imageFound4=false});
-			this.setState({imageFound5: this.state.imageFound5=false});
 		}
 		e.preventDefault();
 	}
