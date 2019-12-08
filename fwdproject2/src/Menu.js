@@ -10,7 +10,11 @@ class Menu extends Component{
 			score: 0,
 			level: 1,
 			counter: 0,
-			imageFound: false,
+			imageFound1: false,
+			imageFound2: false,
+			imageFound3: false,
+			imageFound4: false,
+			imageFound5: false,
 			itemsLevels: ["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"],
 			backgroundImageSet: "/coffeeshop.png",
 			xpos1: 0,
@@ -53,11 +57,27 @@ class Menu extends Component{
 	handleScoreIncrement(e){
 		if(this.state.counter < 5){
 			this.setState({score: this.state.score+10, counter: this.state.counter+1});
-			this.setState({imageFound: this.state.imageFound =true});
+			if(this.state.counter == 0){
+				this.setState({imageFound1: this.state.imageFound1 =true});
+			} else if(this.state.counter == 1){
+				this.setState({imageFound2: this.state.imageFound2 =true});
+			} else if(this.state.counter == 2){
+				this.setState({imageFound3: this.state.imageFound3 =true});
+			} else if(this.state.counter == 3){
+				this.setState({imageFound4: this.state.imageFound4 =true});
+			} else{
+				this.setState({imageFound5: this.state.imageFound5 =true});
+				this.handleLevelChange();
+			}
+			
 		} else {
 			this.handleLevelChange();
 			this.setState({counter: this.state.counter=0});
-			this.setState({imageFound: this.state.imageFound=false});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
 		}
 		e.preventDefault();
 	}
@@ -117,7 +137,6 @@ class Menu extends Component{
     		margin: "0 auto"
     	}
     	var findItemStyle1 ={
-    		display: this.state.imageFound ? {display: "none"} : {},
     		maxWidth: "5%",
     		position: "relative",
     		left: this.state.xpos1.toString()+ "vw",
@@ -150,7 +169,12 @@ class Menu extends Component{
     	var centerStyle = {
     		justifyContent: "center",
     	}
-    	const imageHide = this.state.imageFound ? {display: "none"} : {};
+    	const imageHide1 = this.state.imageFound1 ? {display: "none"} : {};
+    	const imageHide2 = this.state.imageFound2 ? {display: "none"} : {};
+    	const imageHide3 = this.state.imageFound3 ? {display: "none"} : {};
+    	const imageHide4 = this.state.imageFound4 ? {display: "none"} : {};
+    	const imageHide5 = this.state.imageFound5 ? {display: "none"} : {};
+
 		return(
 			<div>
         		<div className = "groceryListMain">
@@ -163,19 +187,19 @@ class Menu extends Component{
         			</div>
           			<div style={centerStyle}>
 	          			<div style= {backgroundDesign}>
-	          				<div style ={imageHide}>
+	          				<div style ={imageHide1}>
 		          				<img src={this.state.itemsLevels[0]} style={findItemStyle1} onClick={this.handleScoreIncrement}/>
 		          			</div>
-		          			<div style={imageHide}>
+		          			<div style={imageHide2}>
 		          				<img src={this.state.itemsLevels[1]} style={findItemStyle2} onClick={this.handleScoreIncrement}/>
 		          			</div>
-		          			<div style={imageHide}>
+		          			<div style={imageHide3}>
 		          				<img src={this.state.itemsLevels[2]} style={findItemStyle3} onClick={this.handleScoreIncrement}/>
 		          			</div>
-		          			<div style={imageHide}>
+		          			<div style={imageHide4}>
 		          				<img src={this.state.itemsLevels[3]} style={findItemStyle4} onClick={this.handleScoreIncrement}/>
 		          			</div>
-		          			<div style={imageHide}>
+		          			<div style={imageHide5}>
 		          				<img src={this.state.itemsLevels[4]} style={findItemStyle5} onClick={this.handleScoreIncrement}/>
 	          				</div>
 	          			</div>
