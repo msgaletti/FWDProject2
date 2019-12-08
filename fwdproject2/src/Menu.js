@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Hint from './Hint';
+import Item from './Item'
 
 
 class Menu extends Component{
@@ -9,43 +10,69 @@ class Menu extends Component{
 			score: 0,
 			level: 1,
 			counter: 0,
-			imageFound: false
+			imageFound: false,
+			itemsLevels: ["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"],
+			backgroundImageSet: "/coffeeshop.png",
+			xpos1: 0,
+			xpos2: 0,
+			xpos3: 0,
+			xpos4: 0,
+			xpos5: 0,
+			ypos1: 0, 
+			ypos2: 0,
+			ypos3: 0,
+			ypos4: 0, 
+			ypos5: 0
 		};
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
 		this.handleLevelChange = this.handleLevelChange.bind(this);
-		this.handleHide = this.handleHide.bind(this);
-		
 	}
 
 	handleLevelChange(e){
 		if(this.state.level == 1){
 			this.setState({level: this.state.level +1});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
 		} else if(this.state.level == 2){
 			this.setState({level: this.state.level +1});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
 		} else if(this.state.level == 4){
 			this.setState({level: this.state.level +1});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
 		} else{
 			this.setState({level: this.state.level = 1});
 			this.setState({score: this.state.score =0});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
 		}
-	}
-
-	handleHide(e){
-		
 	}
 
 
 	handleScoreIncrement(e){
 		if(this.state.counter < 5){
 			this.setState({score: this.state.score+10, counter: this.state.counter+1});
+			this.setState({imageFound: this.state.imageFound =true});
 		} else {
 			this.handleLevelChange();
 			this.setState({counter: this.state.counter=0});
+			this.setState({imageFound: this.state.imageFound=false});
 		}
 		e.preventDefault();
+	}
+
+	componentDidMount(){
+		this.setState({xpos1: this.state.xpos1 = Math.random()*40});
+		this.setState({xpos2: this.state.xpos2 = Math.random()*40});
+		this.setState({xpos3: this.state.xpos3 = Math.random()*40});
+		this.setState({xpos4: this.state.xpos4 = Math.random()*40});
+		this.setState({xpos5: this.state.xpos5 = Math.random()*40});
+		this.setState({ypos1: this.state.ypos1 = Math.random()*40});
+		this.setState({ypos2: this.state.ypos2 = Math.random()*40});
+		this.setState({ypos3: this.state.ypos3 = Math.random()*40});
+		this.setState({ypos4: this.state.ypos4 = Math.random()*40});
+		this.setState({ypos5: this.state.ypos5 = Math.random()*40});
 	}
 
 	
@@ -80,7 +107,7 @@ class Menu extends Component{
       		fontSize: 14
     	}
     	var backgroundDesign={
-    		backgroundImage: "url('/coffeeshop.png')",
+    		backgroundImage: "url(" + this.state.backgroundImageSet + ")",
     		backgroundSize: "cover",
     		backgroundPosition: "center",
     		justifyContent: "center",
@@ -90,38 +117,40 @@ class Menu extends Component{
     		margin: "0 auto"
     	}
     	var findItemStyle1 ={
+    		display: this.state.imageFound ? {display: "none"} : {},
     		maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*40 + "vw",
-    		top: Math.random()*40 + "vw"
+    		left: this.state.xpos1.toString()+ "vw",
+    		top: this.state.ypos1.toString() + "vw",
     	}
     	var findItemStyle2 ={
     		maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*40 + "vw",
-    		top: Math.random()*40 + "vw"
+    		left: this.state.xpos2.toString() + "vw",
+    		top: this.state.ypos2.toString() + "vw"
     	}
     	var findItemStyle3 = {
     		maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*40 + "vw",
-    		top: Math.random()*40 + "vw"
+    		left: this.state.xpos3.toString() + "vw",
+    		top: this.state.ypos3.toString() + "vw"
     	}
     	var findItemStyle4 = {
     		maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*40 + "vw",
-    		top: Math.random()*40 + "vw"
+    		left: this.state.xpos4.toString() + "vw",
+    		top: this.state.ypos4.toString() + "vw"
     	}
     	var findItemStyle5 = {
 			maxWidth: "5%",
     		position: "relative",
-    		left: Math.random()*40 + "vw",
-    		top: Math.random()*40 + "vw"
+    		left: this.state.xpos5.toString() + "vw",
+    		top: this.state.ypos5.toString() + "vw"
     	}
     	var centerStyle = {
     		justifyContent: "center",
     	}
+    	const imageHide = this.state.imageFound ? {display: "none"} : {};
 		return(
 			<div>
         		<div className = "groceryListMain">
@@ -133,15 +162,26 @@ class Menu extends Component{
         				<h3 style={groceryListStyle}> Your level: {this.state.level}</h3>
         			</div>
           			<div style={centerStyle}>
-	          			<div style={backgroundDesign}>
-	          				<img src="coffeecup.png" style={findItemStyle1} onClick={this.handleScoreIncrement}/>
-	          				<img src="book.png" style={findItemStyle2} onClick={this.handleScoreIncrement}/>
-	          				<img src="bean.png" style={findItemStyle3} onClick={this.handleScoreIncrement}/>
-	          				<img src="frenchpress.png" style={findItemStyle4} onClick={this.handleScoreIncrement}/>
-	          				<img src="eclaire.png" style={findItemStyle5} onClick={this.handleScoreIncrement}/>
+	          			<div style= {backgroundDesign}>
+	          				<div style ={imageHide}>
+		          				<img src={this.state.itemsLevels[0]} style={findItemStyle1} onClick={this.handleScoreIncrement}/>
+		          			</div>
+		          			<div style={imageHide}>
+		          				<img src={this.state.itemsLevels[1]} style={findItemStyle2} onClick={this.handleScoreIncrement}/>
+		          			</div>
+		          			<div style={imageHide}>
+		          				<img src={this.state.itemsLevels[2]} style={findItemStyle3} onClick={this.handleScoreIncrement}/>
+		          			</div>
+		          			<div style={imageHide}>
+		          				<img src={this.state.itemsLevels[3]} style={findItemStyle4} onClick={this.handleScoreIncrement}/>
+		          			</div>
+		          			<div style={imageHide}>
+		          				<img src={this.state.itemsLevels[4]} style={findItemStyle5} onClick={this.handleScoreIncrement}/>
+	          				</div>
 	          			</div>
 	          		</div>
 	          		<Hint />
+	          		<Item itemsToFind={this.state.itemsLevels}/>
         		</div>
         	</div>
 		);
