@@ -74,11 +74,6 @@ class Hint extends Component {
 				<div>
 					<h2> Hint </h2>
 				</div>
-							
-				<div>
-          			<ul style={glowStyle} > {this.props.itemsToGlow.map(item => <li style={glowStyle} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} key={item.key}>{item.name}</li>)}</ul>
-      			</div>
-         
 			</div>
 		);
 	}

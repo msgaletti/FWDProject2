@@ -9,7 +9,7 @@ class Menu extends Component{
 		this.state = {
 			score: 0,
 			level: 1,
-			counter: 0,
+			counter: 5,
 			imageFound1: false,
 			imageFound2: false,
 			imageFound3: false,
@@ -27,7 +27,8 @@ class Menu extends Component{
 			ypos3: 0,
 			ypos4: 0, 
 			ypos5: 0,
-			glowHover: false
+			glowHover: false,
+			userSelected: "image"
 		};
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
@@ -55,34 +56,51 @@ class Menu extends Component{
 			this.setState({itemsLevels: this.state.itemsLevels = ["bear.png", "car.png", "lego.png", "minion.png", "train.png"]});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/Headshot.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/costco.png"});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
+			this.setState({itemsLevels: this.state.itemsLevels = ["syrup.png", "chips.png", "soap.png", "toiletpaper.png", "computer.png"]});
 		} else if(this.state.level == 4){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/garden.png"});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
+			this.setState({itemsLevels: this.state.itemsLevels = ["strawberry.png", "carrot.png", "gnome.png", "vase.png", "shovel.png"]});
 		} else{
 			this.setState({level: this.state.level = 1});
 			this.setState({score: this.state.score =0});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
+			this.setState({itemsLevels: this.state.itemsLevels =["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"]});
 		}
 	}
 
 
 	handleScoreIncrement(e){
-		if(this.state.counter < 5){
-			this.setState({score: this.state.score+10, counter: this.state.counter+1});
-			if(this.state.counter == 0){
+		this.setState({userSelected: this.state.userSelected = e.target.id});
+		this.setState({score: this.state.score+10});
+		if(this.state.counter >1){
+			this.setState({counter: this.state.counter-1});
+			if(this.state.userSelected == this.state.itemsLevels[0]){
 				this.setState({imageFound1: this.state.imageFound1 =true});
-			} else if(this.state.counter == 1){
+			} else if(this.state.userSelected == this.state.itemsLevels[1]){
 				this.setState({imageFound2: this.state.imageFound2 =true});
-			} else if(this.state.counter == 2){
+			} else if(this.state.userSelected == this.state.itemsLevels[2]){
 				this.setState({imageFound3: this.state.imageFound3 =true});
-			} else if(this.state.counter == 3){
+			} else if(this.state.userSelected == this.state.itemsLevels[3]){
 				this.setState({imageFound4: this.state.imageFound4 =true});
-			} else{
+			} else if(this.state.userSelected == this.state.itemsLevels[4]){
 				this.setState({imageFound5: this.state.imageFound5 =true});
-				this.setState({counter: this.state.counter=0});
-				this.handleLevelChange();
 			}
+		} else{
+			this.setState({counter: this.state.counter = 5});
+			this.handleLevelChange();
+			
 		}
 		e.preventDefault();
 	}
@@ -109,9 +127,6 @@ class Menu extends Component{
 		this.setState({ypos5: this.state.ypos5 = Math.random()*40});
 	}
 
-	
-//Use component did mount or onMount
-//play again 
 //generate all random numbers and then call again if doing a play again
 	render(){
 		var headerStyle = {
@@ -201,37 +216,37 @@ class Menu extends Component{
         				<h2 style={groceryListStyle}> Your score: {this.state.score}</h2>
         				<h3 style={groceryListStyle}> Your level: {this.state.level}</h3>
         			</div>
+        			<Item itemsToFind={this.state.itemsLevels}/>
           			<div style={centerStyle}>
 	          			<div style= {backgroundDesign}>
 	          					<div style={glowStyle}>
 			          				<div style ={imageHide1} >
-				          				<img src={this.state.itemsLevels[0]} style={findItemStyle1} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          				<img src={this.state.itemsLevels[0]} id={this.state.itemsLevels[0]} style={findItemStyle1} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
 				          		<div style={glowStyle}>
 				          			<div style={imageHide2}>
-				          				<img src={this.state.itemsLevels[1]} style={findItemStyle2} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          				<img src={this.state.itemsLevels[1]} id={this.state.itemsLevels[1]} style={findItemStyle2} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
 				          		<div style={glowStyle}>
 				          			<div style={imageHide3}>
-				          				<img src={this.state.itemsLevels[2]} style={findItemStyle3} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          				<img src={this.state.itemsLevels[2]} id={this.state.itemsLevels[2]} style={findItemStyle3} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
 				          		<div style={glowStyle}>
 				          			<div style={imageHide4}>
-				          				<img src={this.state.itemsLevels[3]} style={findItemStyle4} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          				<img src={this.state.itemsLevels[3]} id={this.state.itemsLevels[3]} style={findItemStyle4} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
 				          		<div style={glowStyle}>
 				          			<div style={imageHide5}>
-				          				<img src={this.state.itemsLevels[4]} style={findItemStyle5} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          				<img src={this.state.itemsLevels[4]} id={this.state.itemsLevels[4]} style={findItemStyle5} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 			          				</div>
 			          			</div>
 	          			</div>
 	          		</div>
 	          		<Hint itemsToGlow={this.state.itemsLevels}/>
-	          		<Item itemsToFind={this.state.itemsLevels}/>
         		</div>
         	</div>
 		);

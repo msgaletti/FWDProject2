@@ -5,24 +5,23 @@ class Item extends Component{
 		super(props);
 	}
 
-	handleHide(e){
-		
-	}
-
 	render(){
-		var listItemStyle = {
-			maxWidth: "10%",
+		var imageStyle = {
+			maxWidth: "20%",
+		}
+		var listItemStyle ={
+			display: "inline",
+			listStyle: "none",
+			padding: "5%"
+		}
+		var displayItems ={
+			margin: "0 auto",
+			textAlign: "center",
 		}
 	
 		return(
 			<div>
-				<ul>
-					<li><img src="coffeecup.png" style={listItemStyle} onClick={this.handleHide}/></li>
-					<li><img src="book.png" style={listItemStyle} onClick={this.handleHide}/></li>
-					<li><img src="bean.png" style={listItemStyle} onClick={this.handleHide}/></li>
-					<li><img src="frenchpress.png" style={listItemStyle} onClick={this.handleHide}/></li>
-					<li><img src="eclaire.png" style={listItemStyle} onClick={this.handleHide}/></li>
-				</ul>
+				<ul style={displayItems}> {this.props.itemsToFind.map((item, index)=> <li key={ `item-${ index }` } style={listItemStyle}><img src={item} style={imageStyle}/></li>)}</ul>
 			</div>
 		);
 	}
