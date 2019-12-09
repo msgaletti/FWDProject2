@@ -165,31 +165,31 @@ class Menu extends Component{
     		margin: "0 auto"
     	}
     	var findItemStyle1 ={
-    		maxWidth: "5%",
+    		maxWidth: "3%",
     		position: "relative",
     		left: this.state.xpos1.toString()+ "vw",
     		top: this.state.ypos1.toString() + "vw",
     	}
     	var findItemStyle2 ={
-    		maxWidth: "5%",
+    		maxWidth: "3%",
     		position: "relative",
     		left: this.state.xpos2.toString() + "vw",
     		top: this.state.ypos2.toString() + "vw"
     	}
     	var findItemStyle3 = {
-    		maxWidth: "5%",
+    		maxWidth: "3%",
     		position: "relative",
     		left: this.state.xpos3.toString() + "vw",
     		top: this.state.ypos3.toString() + "vw"
     	}
     	var findItemStyle4 = {
-    		maxWidth: "5%",
+    		maxWidth: "3%",
     		position: "relative",
     		left: this.state.xpos4.toString() + "vw",
     		top: this.state.ypos4.toString() + "vw"
     	}
     	var findItemStyle5 = {
-			maxWidth: "5%",
+			maxWidth: "3%",
     		position: "relative",
     		left: this.state.xpos5.toString() + "vw",
     		top: this.state.ypos5.toString() + "vw"
