@@ -26,7 +26,8 @@ class Menu extends Component{
 			ypos2: 0,
 			ypos3: 0,
 			ypos4: 0, 
-			ypos5: 0
+			ypos5: 0,
+			glowHover: false
 		};
 
 		this.handleScoreIncrement= this.handleScoreIncrement.bind(this);
@@ -85,6 +86,15 @@ class Menu extends Component{
 		}
 		e.preventDefault();
 	}
+
+	handleMouseInGlow() {
+    	this.setState({ glowHover: true });
+  	}
+  
+  	handleMouseOutGlow() {
+    	this.setState({ glowHover: false })
+  	}
+
 
 	componentDidMount(){
 		this.setState({xpos1: this.state.xpos1 = Math.random()*40});
@@ -179,6 +189,8 @@ class Menu extends Component{
     	const imageHide4 = this.state.imageFound4 ? {display: "none"} : {};
     	const imageHide5 = this.state.imageFound5 ? {display: "none"} : {};
 
+    	const glowStyle = this.state.glowHover ? {boxShadow: '10px 10px yellow'} : {};
+
 		return(
 			<div>
         		<div className = "groceryListMain">
@@ -191,24 +203,34 @@ class Menu extends Component{
         			</div>
           			<div style={centerStyle}>
 	          			<div style= {backgroundDesign}>
-	          				<div style ={imageHide1}>
-		          				<img src={this.state.itemsLevels[0]} style={findItemStyle1} onClick={this.handleScoreIncrement}/>
-		          			</div>
-		          			<div style={imageHide2}>
-		          				<img src={this.state.itemsLevels[1]} style={findItemStyle2} onClick={this.handleScoreIncrement}/>
-		          			</div>
-		          			<div style={imageHide3}>
-		          				<img src={this.state.itemsLevels[2]} style={findItemStyle3} onClick={this.handleScoreIncrement}/>
-		          			</div>
-		          			<div style={imageHide4}>
-		          				<img src={this.state.itemsLevels[3]} style={findItemStyle4} onClick={this.handleScoreIncrement}/>
-		          			</div>
-		          			<div style={imageHide5}>
-		          				<img src={this.state.itemsLevels[4]} style={findItemStyle5} onClick={this.handleScoreIncrement}/>
-	          				</div>
+	          					<div style={glowStyle}>
+			          				<div style ={imageHide1} >
+				          				<img src={this.state.itemsLevels[0]} style={findItemStyle1} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          			</div>
+				          		</div>
+				          		<div style={glowStyle}>
+				          			<div style={imageHide2}>
+				          				<img src={this.state.itemsLevels[1]} style={findItemStyle2} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          			</div>
+				          		</div>
+				          		<div style={glowStyle}>
+				          			<div style={imageHide3}>
+				          				<img src={this.state.itemsLevels[2]} style={findItemStyle3} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          			</div>
+				          		</div>
+				          		<div style={glowStyle}>
+				          			<div style={imageHide4}>
+				          				<img src={this.state.itemsLevels[3]} style={findItemStyle4} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+				          			</div>
+				          		</div>
+				          		<div style={glowStyle}>
+				          			<div style={imageHide5}>
+				          				<img src={this.state.itemsLevels[4]} style={findItemStyle5} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
+			          				</div>
+			          			</div>
 	          			</div>
 	          		</div>
-	          		<Hint />
+	          		<Hint itemsToGlow={this.state.itemsLevels}/>
 	          		<Item itemsToFind={this.state.itemsLevels}/>
         		</div>
         	</div>
