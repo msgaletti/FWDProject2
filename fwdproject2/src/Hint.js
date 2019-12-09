@@ -42,14 +42,14 @@ class Hint extends Component {
 
 	render() {
 		var iconStyle = {
-			textAlign: "center"
+			textAlign: "center",
+			marginTop: "2%"
 		}
 		const tooltipStyle = {
-	    	display: this.state.hover ? 'block' : 'none',
+	    	display: this.state.hover ? 'inline' : 'none',
 	    	backgroundColor: "rgba(0, 0, 0, .75)",
 	    	color: "white",
 	    	width: "20%",
-	    	textAlign: "center",
 	    	padding: "1% 0",
 	    	borderRadius: "1%"
 	    }
@@ -65,15 +65,12 @@ class Hint extends Component {
 		return (
 			<div>
 				
-				<div className="hintIcon" onMouseOver={this.handleMouseIn.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
-					<button style={iconStyle} onClick={this.hintToggle} value={hintStatus}><img src="/hintButton.png"/></button>
+				<div className="hintIcon">
+					<button style={iconStyle} onClick={this.hintToggle} value={hintStatus}><img src="/hintButton.png" onMouseOver={this.handleMouseIn.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}/></button>
 				</div>
         		<div>
           			<div style={tooltipStyle}>Turning on hints will cause all hidden items to glow on hover and wrong clicks will decrease score</div>
         		</div>
-				<div>
-					<h2> Hint </h2>
-				</div>
 			</div>
 		);
 	}

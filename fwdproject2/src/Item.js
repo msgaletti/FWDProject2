@@ -7,16 +7,20 @@ class Item extends Component{
 
 	render(){
 		var imageStyle = {
-			maxWidth: "20%",
+			maxWidth: "10%",
 		}
 		var listItemStyle ={
 			display: "inline",
 			listStyle: "none",
-			padding: "5%"
+			padding: "5%",
+			maxWidth: "40%"
 		}
 		var displayItems ={
 			margin: "0 auto",
 			textAlign: "center",
+			marginBottom: "2%",
+			maxWidth: "50%",
+			padding: "0"
 		}
 	
 		return(

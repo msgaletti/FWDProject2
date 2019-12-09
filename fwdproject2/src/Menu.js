@@ -113,18 +113,17 @@ class Menu extends Component{
     	this.setState({ glowHover: false })
   	}
 
-
 	componentDidMount(){
-		this.setState({xpos1: this.state.xpos1 = Math.random()*40});
-		this.setState({xpos2: this.state.xpos2 = Math.random()*40});
-		this.setState({xpos3: this.state.xpos3 = Math.random()*40});
-		this.setState({xpos4: this.state.xpos4 = Math.random()*40});
-		this.setState({xpos5: this.state.xpos5 = Math.random()*40});
-		this.setState({ypos1: this.state.ypos1 = Math.random()*40});
-		this.setState({ypos2: this.state.ypos2 = Math.random()*40});
-		this.setState({ypos3: this.state.ypos3 = Math.random()*40});
-		this.setState({ypos4: this.state.ypos4 = Math.random()*40});
-		this.setState({ypos5: this.state.ypos5 = Math.random()*40});
+		this.setState({xpos1: this.state.xpos1 = Math.random()*25});
+		this.setState({xpos2: this.state.xpos2 = Math.random()*25});
+		this.setState({xpos3: this.state.xpos3 = Math.random()*25});
+		this.setState({xpos4: this.state.xpos4 = Math.random()*25});
+		this.setState({xpos5: this.state.xpos5 = Math.random()*25});
+		this.setState({ypos1: this.state.ypos1 = Math.random()*25});
+		this.setState({ypos2: this.state.ypos2 = Math.random()*25});
+		this.setState({ypos3: this.state.ypos3 = Math.random()*25});
+		this.setState({ypos4: this.state.ypos4 = Math.random()*25});
+		this.setState({ypos5: this.state.ypos5 = Math.random()*25});
 	}
 
 //generate all random numbers and then call again if doing a play again
@@ -160,8 +159,8 @@ class Menu extends Component{
     		backgroundSize: "cover",
     		backgroundPosition: "center",
     		justifyContent: "center",
-    		width: "50vw",
-    		height: "50vw",
+    		width: "40vw",
+    		height: "40vw",
     		backgroundRepeat: "no-repeat",
     		margin: "0 auto"
     	}
@@ -198,55 +197,69 @@ class Menu extends Component{
     	var centerStyle = {
     		justifyContent: "center",
     	}
+    	var horizontalStyle = {
+			display: "inline",
+			listStyle: "none",
+			padding: "2%",
+			fontSize: 18
+    	}
+    	var centerListStyle ={
+    		margin: "0 auto",
+			textAlign: "center",
+			padding: "0"
+    	}
     	const imageHide1 = this.state.imageFound1 ? {display: "none"} : {};
     	const imageHide2 = this.state.imageFound2 ? {display: "none"} : {};
     	const imageHide3 = this.state.imageFound3 ? {display: "none"} : {};
     	const imageHide4 = this.state.imageFound4 ? {display: "none"} : {};
     	const imageHide5 = this.state.imageFound5 ? {display: "none"} : {};
 
-    	const glowStyle = this.state.glowHover ? {boxShadow: '10px 10px yellow'} : {};
+    	const glowStyle = this.state.glowHover ? {boxShadow: '7px 7px 20px yellow'} : {};
 
 		return(
 			<div>
-        		<div className = "groceryListMain">
+        		<div className = "findMeHeader">
         			<div className = "header">
           				<h1 style={headerStyle}> Find Me! </h1>
         			</div>
         			<div>
-        				<h2 style={groceryListStyle}> Your score: {this.state.score}</h2>
-        				<h3 style={groceryListStyle}> Your level: {this.state.level}</h3>
+        				<ul style={centerListStyle}>
+        					<li style={horizontalStyle}>Your score: {this.state.score}</li>
+        					<li style={horizontalStyle}>Your level: {this.state.level}</li>
+        					<li style={horizontalStyle}><Hint itemsToGlow={this.state.itemsLevels} style={horizontalStyle}/></li>
+        				</ul>
         			</div>
         			<Item itemsToFind={this.state.itemsLevels}/>
           			<div style={centerStyle}>
-	          			<div style= {backgroundDesign}>
-	          					<div style={glowStyle}>
+	          			<div style= {Object.assign({}, glowStyle, backgroundDesign)}>
+	          					<div>
 			          				<div style ={imageHide1} >
 				          				<img src={this.state.itemsLevels[0]} id={this.state.itemsLevels[0]} style={findItemStyle1} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
-				          		<div style={glowStyle}>
+				          		<div>
 				          			<div style={imageHide2}>
 				          				<img src={this.state.itemsLevels[1]} id={this.state.itemsLevels[1]} style={findItemStyle2} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
-				          		<div style={glowStyle}>
+				          		<div>
 				          			<div style={imageHide3}>
 				          				<img src={this.state.itemsLevels[2]} id={this.state.itemsLevels[2]} style={findItemStyle3} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
-				          		<div style={glowStyle}>
+				          		<div>
 				          			<div style={imageHide4}>
 				          				<img src={this.state.itemsLevels[3]} id={this.state.itemsLevels[3]} style={findItemStyle4} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 				          			</div>
 				          		</div>
-				          		<div style={glowStyle}>
+				          		<div>
 				          			<div style={imageHide5}>
 				          				<img src={this.state.itemsLevels[4]} id={this.state.itemsLevels[4]} style={findItemStyle5} onMouseEnter={this.handleMouseInGlow.bind(this)} onMouseLeave={this.handleMouseOutGlow.bind(this)} onClick={this.handleScoreIncrement}/>
 			          				</div>
 			          			</div>
 	          			</div>
 	          		</div>
-	          		<Hint itemsToGlow={this.state.itemsLevels}/>
+	          		
         		</div>
         	</div>
 		);
