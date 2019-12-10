@@ -43,27 +43,33 @@ class Hint extends Component {
 	render() {
 		var iconStyle = {
 			textAlign: "center",
-			marginTop: "2%"
+			marginTop: "2%",
+			marginBottom: "1%"
 		}
 		const tooltipStyle = {
 	    	display: this.state.hover ? 'inline' : 'none',
 	    	backgroundColor: "rgba(0, 0, 0, .75)",
 	    	color: "white",
 	    	width: "20%",
-	    	padding: "1% 0",
 	    	borderRadius: "1%"
 	    }
 	    var listStyle={
 	      width: "60%",
 	      margin: "0",
 	      paddingLeft: "0",
-	      listStyle: "none"
+	      listStyle: "none",
+	      marginTop: "1%",
+	      padding: "2%"
+	    }
+	    var hintStyle={
+	    	width: "40%",
+	    	margin: "0 auto"
 	    }
 	    const glowStyle = this.state.glowHover ? {backgroundColor: 'yellow'} : {};
 	    const hintStatus = this.props.hint;
     
 		return (
-			<div>
+			<div style={hintStyle}>
 				
 				<div className="hintIcon">
 					<button style={iconStyle} onClick={this.hintToggle} value={hintStatus}><img src="/hintButton.png" onMouseOver={this.handleMouseIn.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}/></button>

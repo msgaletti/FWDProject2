@@ -132,28 +132,10 @@ class Menu extends Component{
 			fontFamily: "sans-serif",
 			align: "center",
 			textAlign: "center",
-			fontSize: 28,
-			color: "#00003f"
+			fontSize: 48,
+			color: "#3D1600",
+			fontWeight: "100"
 		}
-		var groceryListStyle = {
-			align: "center",
-			textAlign: "center",
-			fontSize: 22,
-			color: "#00003f"
-		}
-		var formStyle = {
-			align: "center",
-			textAlign: "center",
-			marginBottom: "3%"
-		}
-		var buttonStyle = {
-    		align: "right",
-      		textAlign: "right",
-      		color: "#00003f",
-      		backgroundColor: "#e0ffff",
-      		borderRadius: "8px",
-      		fontSize: 14
-    	}
     	var backgroundDesign={
     		backgroundImage: "url(" + this.state.backgroundImageSet + ")",
     		backgroundSize: "cover",
@@ -201,12 +183,23 @@ class Menu extends Component{
 			display: "inline",
 			listStyle: "none",
 			padding: "2%",
-			fontSize: 18
+			fontSize: 18,
+			color: "#3D1600",
+			fontWeight: "bold"
     	}
     	var centerListStyle ={
     		margin: "0 auto",
 			textAlign: "center",
 			padding: "0"
+    	}
+    	var rusticBackground = {
+    		backgroundImage: "url('/rustic.png')",
+    		backgroundSize: "cover",
+    		backgroundPosition: "center",
+    		justifyContent: "center",
+    		paddingBottom: "2%",
+    		paddingTop: "1%"
+
     	}
     	const imageHide1 = this.state.imageFound1 ? {display: "none"} : {};
     	const imageHide2 = this.state.imageFound2 ? {display: "none"} : {};
@@ -217,17 +210,19 @@ class Menu extends Component{
     	const glowStyle = this.state.glowHover ? {boxShadow: '7px 7px 20px yellow'} : {};
 
 		return(
-			<div>
+			<div style = {rusticBackground}>
         		<div className = "findMeHeader">
         			<div className = "header">
-          				<h1 style={headerStyle}> Find Me! </h1>
+          				<h1 style={headerStyle}> FIND ME! </h1>
         			</div>
         			<div>
         				<ul style={centerListStyle}>
         					<li style={horizontalStyle}>Your score: {this.state.score}</li>
         					<li style={horizontalStyle}>Your level: {this.state.level}</li>
-        					<li style={horizontalStyle}><Hint itemsToGlow={this.state.itemsLevels} style={horizontalStyle}/></li>
         				</ul>
+        			</div>
+        			<div style={centerListStyle}>
+        				<Hint itemsToGlow={this.state.itemsLevels} style={horizontalStyle}/>
         			</div>
         			<Item itemsToFind={this.state.itemsLevels}/>
           			<div style={centerStyle}>

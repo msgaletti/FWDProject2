@@ -18,7 +18,7 @@ class Item extends Component{
 		var displayItems ={
 			margin: "0 auto",
 			textAlign: "center",
-			marginBottom: "2%",
+			marginBottom: "0.5%",
 			maxWidth: "50%",
 			padding: "0"
 		}
