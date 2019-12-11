@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Hint from './Hint';
-import Item from './Item'
+import Item from './Item';
 
 
 class Menu extends Component{
@@ -38,13 +38,13 @@ class Menu extends Component{
 	handleLevelChange(e){
 		if(this.state.level == 1){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/shipwreckAsset.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/costco.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
 			this.setState({imageFound4: this.state.imageFound4=false});
 			this.setState({imageFound5: this.state.imageFound5=false});
-			this.setState({itemsLevels: this.state.itemsLevels = ["treasure.png", "anchor.png", "goblet.png", "rum.png", "wheel.png"]});
+			this.setState({itemsLevels: this.state.itemsLevels = ["syrup.png", "chips.png", "soap.png", "toiletpaper.png", "computer.png"]});
 		} else if(this.state.level == 2){
 			this.setState({level: this.state.level +1});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/kidsplayroom.png"});
@@ -56,13 +56,13 @@ class Menu extends Component{
 			this.setState({itemsLevels: this.state.itemsLevels = ["bear.png", "car.png", "lego.png", "minion.png", "train.png"]});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/costco.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/shipwreckAsset.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
 			this.setState({imageFound4: this.state.imageFound4=false});
 			this.setState({imageFound5: this.state.imageFound5=false});
-			this.setState({itemsLevels: this.state.itemsLevels = ["syrup.png", "chips.png", "soap.png", "toiletpaper.png", "computer.png"]});
+			this.setState({itemsLevels: this.state.itemsLevels = ["treasure.png", "anchor.png", "goblet.png", "rum.png", "wheel.png"]});
 		} else if(this.state.level == 4){
 			this.setState({level: this.state.level +1});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/garden.png"});
@@ -73,8 +73,15 @@ class Menu extends Component{
 			this.setState({imageFound5: this.state.imageFound5=false});
 			this.setState({itemsLevels: this.state.itemsLevels = ["strawberry.png", "carrot.png", "gnome.png", "vase.png", "shovel.png"]});
 		} else{
+			//getting information on doing alert: https://stackoverflow.com/questions/48918826/reactjs-alert-message-with-data-on-it
+			window.confirm('You won! Your final score is ' + this.state.score + '. Would you like to play again?');
 			this.setState({level: this.state.level = 1});
 			this.setState({score: this.state.score =0});
+			this.setState({imageFound1: this.state.imageFound1=false});
+			this.setState({imageFound2: this.state.imageFound2=false});
+			this.setState({imageFound3: this.state.imageFound3=false});
+			this.setState({imageFound4: this.state.imageFound4=false});
+			this.setState({imageFound5: this.state.imageFound5=false});
 			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
 			this.setState({itemsLevels: this.state.itemsLevels =["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"]});
 		}
@@ -100,7 +107,6 @@ class Menu extends Component{
 		} else{
 			this.setState({counter: this.state.counter = 5});
 			this.handleLevelChange();
-			
 		}
 		e.preventDefault();
 	}
@@ -201,6 +207,8 @@ class Menu extends Component{
     		paddingTop: "1%"
 
     	}
+
+    	//how to hide an image: https://agilewarrior.wordpress.com/2017/10/10/how-to-hide-elements-the-reactjs-way/
     	const imageHide1 = this.state.imageFound1 ? {display: "none"} : {};
     	const imageHide2 = this.state.imageFound2 ? {display: "none"} : {};
     	const imageHide3 = this.state.imageFound3 ? {display: "none"} : {};
@@ -224,7 +232,7 @@ class Menu extends Component{
         			<div style={centerListStyle}>
         				<Hint itemsToGlow={this.state.itemsLevels} style={horizontalStyle}/>
         			</div>
-        			<Item itemsToFind={this.state.itemsLevels}/>
+        			<Item found1 = {this.state.imageFound1} found2 = {this.state.imageFound2} found3 = {this.state.imageFound3} found4= {this.state.imageFound4} found5={this.state.imageFound5} itemsToFind={this.state.itemsLevels}/>
           			<div style={centerStyle}>
 	          			<div style= {Object.assign({}, glowStyle, backgroundDesign)}>
 	          					<div>
