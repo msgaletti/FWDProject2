@@ -72,7 +72,7 @@ class Hint extends Component {
 			<div style={hintStyle}>
 				
 				<div className="hintIcon">
-					<button style={iconStyle} onClick={this.hintToggle} value={hintStatus}><img src="/hintButton.png" onMouseOver={this.handleMouseIn.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}/></button>
+					<button style={iconStyle} onClick={this.hintToggle} value={hintStatus}><img src="hintButton.png" onMouseOver={this.handleMouseIn.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}/></button>
 				</div>
         		<div>
           			<div style={tooltipStyle}>Turning on hints will cause all hidden items to glow on hover and wrong clicks will decrease score</div>

@@ -16,7 +16,7 @@ class Menu extends Component{
 			imageFound4: false,
 			imageFound5: false,
 			itemsLevels: ["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"],
-			backgroundImageSet: "/coffeeshop.png",
+			backgroundImageSet: "coffeeshop.png",
 			xpos1: 0,
 			xpos2: 0,
 			xpos3: 0,
@@ -38,7 +38,7 @@ class Menu extends Component{
 	handleLevelChange(e){
 		if(this.state.level == 1){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/costco.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "costco.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
@@ -47,7 +47,7 @@ class Menu extends Component{
 			this.setState({itemsLevels: this.state.itemsLevels = ["syrup.png", "chips.png", "soap.png", "toiletpaper.png", "computer.png"]});
 		} else if(this.state.level == 2){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/kidsplayroom.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "kidsplayroom.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
@@ -56,7 +56,7 @@ class Menu extends Component{
 			this.setState({itemsLevels: this.state.itemsLevels = ["bear.png", "car.png", "lego.png", "minion.png", "train.png"]});
 		} else if(this.state.level == 3){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/shipwreckAsset.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "shipwreckAsset.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
@@ -65,7 +65,7 @@ class Menu extends Component{
 			this.setState({itemsLevels: this.state.itemsLevels = ["treasure.png", "anchor.png", "goblet.png", "rum.png", "wheel.png"]});
 		} else if(this.state.level == 4){
 			this.setState({level: this.state.level +1});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/garden.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "garden.png"});
 			this.setState({imageFound1: this.state.imageFound1=false});
 			this.setState({imageFound2: this.state.imageFound2=false});
 			this.setState({imageFound3: this.state.imageFound3=false});
@@ -82,7 +82,7 @@ class Menu extends Component{
 			this.setState({imageFound3: this.state.imageFound3=false});
 			this.setState({imageFound4: this.state.imageFound4=false});
 			this.setState({imageFound5: this.state.imageFound5=false});
-			this.setState({backgroundImageSet: this.state.backgroundImageSet = "/coffeeshop.png"});
+			this.setState({backgroundImageSet: this.state.backgroundImageSet = "coffeeshop.png"});
 			this.setState({itemsLevels: this.state.itemsLevels =["coffeecup.png", "bean.png", "book.png", "eclaire.png", "frenchpress.png"]});
 		}
 	}
@@ -199,7 +199,7 @@ class Menu extends Component{
 			padding: "0"
     	}
     	var rusticBackground = {
-    		backgroundImage: "url('/rustic.png')",
+    		backgroundImage: "url('rustic.png')",
     		backgroundSize: "cover",
     		backgroundPosition: "center",
     		justifyContent: "center",
